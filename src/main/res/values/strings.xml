@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">SOSPirangueiro</string>
+    <string-array name="tempo">
+        <item>Semanal</item>
+        <item>Mensal</item>
+    </string-array>
 </resources>
