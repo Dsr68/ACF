@@ -8,7 +8,7 @@ public class Metas extends Gastos{
 
     }
 
-    public Metas(int id, String descricao, double limite, String tempo){
+    public Metas(String id, String descricao, double limite, String tempo){
         super(id, descricao);
 
         this.limite = limite;

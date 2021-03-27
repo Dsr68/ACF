@@ -1,24 +1,23 @@
 package com.example.sospirangueiro.view;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
 import com.example.sospirangueiro.R;
-import com.example.sospirangueiro.modelbean.Gastos;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class GastosActivy extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_gastos_activy);
+        setContentView(R.layout.activity_gastos);
 
-        Button meta = findViewById(R.id.btnMeta);
-        Button gf = findViewById(R.id.btnGastosFixos);
+        Button meta = findViewById(R.id.btnCriarMetas);
+        Button gf = findViewById(R.id.btnRegistrarGastosFixos);
 
         meta.setOnClickListener(new View.OnClickListener() {
             @Override

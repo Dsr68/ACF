@@ -1,7 +1,7 @@
 package com.example.sospirangueiro.modelbean;
 
 public class DespesasDiarias {
-    private int id;
+    private String id;
     private String descricao;
     private double valor;
     private String categoria;
@@ -12,7 +12,7 @@ public class DespesasDiarias {
 
     }
 
-    public DespesasDiarias(int id, String descricao, double valor, String categoria,
+    public DespesasDiarias(String id, String descricao, double valor, String categoria,
                            String semana, String ano) {
         this.id = id;
         this.descricao = descricao;
@@ -22,11 +22,11 @@ public class DespesasDiarias {
         this.ano = ano;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

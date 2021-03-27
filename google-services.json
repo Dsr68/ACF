@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "93248928119",
+    "firebase_url": "https://sospirangueiro-default-rtdb.firebaseio.com",
+    "project_id": "sospirangueiro",
+    "storage_bucket": "sospirangueiro.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:93248928119:android:0a3165d9fa4bdbcd428972",
+        "android_client_info": {
+          "package_name": "com.example.sospirangueiro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "93248928119-gb7sheif1v79kt6tl6aoklu896fi15tt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAc7mnjCCExL6gW3NG_LsqyOsosSipJVXE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "93248928119-gb7sheif1v79kt6tl6aoklu896fi15tt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

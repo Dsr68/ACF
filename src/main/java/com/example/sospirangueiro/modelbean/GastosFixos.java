@@ -7,7 +7,7 @@ public class GastosFixos extends  Gastos{
 
     }
 
-    public GastosFixos(int id, String descricao, double valor){
+    public GastosFixos(String id, String descricao, double valor){
         super(id, descricao);
 
         this.valor = valor;

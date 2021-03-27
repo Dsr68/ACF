@@ -1,23 +1,23 @@
 package com.example.sospirangueiro.modelbean;
 
 public class Gastos {
-    private int id;
+    private String id;
     private String descricao;
 
     public Gastos(){
 
     }
 
-    public Gastos(int id, String descricao){
+    public Gastos(String id, String descricao){
         this.id = id;
         this.descricao = descricao;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
