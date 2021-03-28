@@ -5,7 +5,9 @@ public class DespesasDiarias {
     private String descricao;
     private double valor;
     private String categoria;
+    private String meta;
     private String semana;
+    private String mes;
     private String ano;
 
     public DespesasDiarias(){
@@ -68,5 +70,21 @@ public class DespesasDiarias {
 
     public void setAno(String ano) {
         this.ano = ano;
+    }
+
+    public String getMes() {
+        return mes;
+    }
+
+    public void setMes(String mes) {
+        this.mes = mes;
+    }
+
+    public String getMeta() {
+        return meta;
+    }
+
+    public void setMeta(String meta) {
+        this.meta = meta;
     }
 }

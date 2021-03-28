@@ -17,11 +17,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ImageButton gastos = findViewById(R.id.btnGastos);
+        ImageButton despesas = findViewById(R.id.btnDespesasDiarias);
 
         gastos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, GastosActivy.class);
+                startActivity(intent);
+            }
+        });
+
+        despesas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, DespesasDiarias.class);
                 startActivity(intent);
             }
         });

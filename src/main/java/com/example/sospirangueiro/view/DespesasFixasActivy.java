@@ -26,10 +26,12 @@ public class DespesasFixasActivy extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 DespesasFixasDAO df = new DespesasFixasDAO();
-                df.inicilalizar(DespesasFixasActivy.this);
-                df.inserirDados(descricao.getText().toString(), Double.parseDouble(
+                df.inserirDados(DespesasFixasActivy.this, descricao.getText().toString(),
+                        Double.parseDouble(
                         valor.getText().toString()
                 ));
+                descricao.setText("");
+                valor.setText("");
             }
         });
     }
