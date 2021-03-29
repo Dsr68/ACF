@@ -11,7 +11,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.SOSPirangueiro">
-        <activity android:name=".view.DespesasDiarias"></activity>
+        <activity android:name=".view.Listas"></activity>
+        <activity android:name=".view.DespesasDiarias" />
         <activity
             android:name=".view.MainActivity"
             android:label="@string/app_name"

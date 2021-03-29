@@ -10,7 +10,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="95dp"
+        android:layout_marginTop="50dp"
         android:text="Tela Principal"
         android:textColor="@color/black"
         android:textSize="30sp"
@@ -51,7 +51,7 @@
             android:layout_height="match_parent" >
 
             <ImageButton
-                android:id="@+id/imageButton4"
+                android:id="@+id/btnLista"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/ic_office_board_clipboard_tasks_list_to_do_icon_159184"

@@ -7,15 +7,15 @@ public class DespesasDiarias {
     private String categoria;
     private String meta;
     private String semana;
-    private String mes;
-    private String ano;
+    private int mes;
+    private int ano;
 
     public DespesasDiarias(){
 
     }
 
     public DespesasDiarias(String id, String descricao, double valor, String categoria,
-                           String semana, String ano) {
+                           String semana, int ano) {
         this.id = id;
         this.descricao = descricao;
         this.valor = valor;
@@ -64,19 +64,19 @@ public class DespesasDiarias {
         this.semana = semana;
     }
 
-    public String getAno() {
+    public int getAno() {
         return ano;
     }
 
-    public void setAno(String ano) {
+    public void setAno(int ano) {
         this.ano = ano;
     }
 
-    public String getMes() {
+    public int getMes() {
         return mes;
     }
 
-    public void setMes(String mes) {
+    public void setMes(int mes) {
         this.mes = mes;
     }
 
