@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
         ImageButton gastos = findViewById(R.id.btnGastos);
         ImageButton despesas = findViewById(R.id.btnDespesasDiarias);
         ImageButton lista = findViewById(R.id.btnLista);
+        ImageButton calcular = findViewById(R.id.btnCalcular);
 
         gastos.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,6 +41,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, Listas.class);
+                startActivity(intent);
+            }
+        });
+
+        calcular.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Calculos.class);
                 startActivity(intent);
             }
         });
