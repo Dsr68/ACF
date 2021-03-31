@@ -11,6 +11,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.SOSPirangueiro">
+        <activity android:name=".modelo_gastos_fixos" />
         <activity android:name=".view.TelaEditar" />
         <activity android:name=".view.Listas" />
         <activity android:name=".view.DespesasDiarias" />

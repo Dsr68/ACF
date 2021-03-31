@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.sospirangueiro.R;
 import com.example.sospirangueiro.modelbean.Metas;
@@ -77,6 +78,10 @@ public class ListaDeMetas extends RecyclerView.Adapter<ListaDeMetas.ViewHolder> 
 
                 DatabaseReference mr = FirebaseDatabase.getInstance().getReference();
                 mr.child("metas").child(m.getId()).setValue(m);
+
+                Toast toast = Toast.makeText(context, "Alteração realizada com sucesso",
+                        Toast.LENGTH_LONG);
+                toast.show();
             }
         });
 
