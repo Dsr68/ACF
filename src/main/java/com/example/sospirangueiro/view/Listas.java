@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -44,6 +45,7 @@ public class Listas extends AppCompatActivity {
         TextView ano = findViewById(R.id.txtAno);
         RecyclerView rv = findViewById(R.id.dados);
         ImageButton pesquisar = findViewById(R.id.btnPesquisar);
+        ImageButton configurar = findViewById(R.id.btnConfig);
 
         meses.setAdapter(new ArrayAdapter<String>(Listas.this,
                 R.layout.support_simple_spinner_dropdown_item,
@@ -145,6 +147,14 @@ public class Listas extends AppCompatActivity {
 
                     }
                 });
+            }
+        });
+
+        configurar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Listas.this, TelaEditar.class);
+                startActivity(intent);
             }
         });
 
