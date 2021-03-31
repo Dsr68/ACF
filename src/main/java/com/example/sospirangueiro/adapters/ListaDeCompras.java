@@ -95,7 +95,8 @@ public class ListaDeCompras extends RecyclerView.Adapter<ListaDeCompras.ViewHold
             public void onClick(View v) {
                 DatabaseReference dr = FirebaseDatabase.getInstance().getReference();
                 DespesasDiarias dd = new DespesasDiarias();
-                dd.setDescricao(holder.getDescricao().toString());
+                dd.setId(despesas.getId());
+                dd.setDescricao(holder.descricao.getText().toString());
                 dd.setCategoria(holder.categoria.getSelectedItem().toString());
                 dd.setValor(Double.parseDouble(holder.valor.getText().toString().
                         substring(2).replace(",", ".")));
@@ -103,7 +104,7 @@ public class ListaDeCompras extends RecyclerView.Adapter<ListaDeCompras.ViewHold
                 dd.setAno(despesas.getAno());
                 dd.setSemana(despesas.getSemana());
 
-                dr.child("despesas").child(despesas.getId()).setValue(dd);
+                dr.child("despesas").child(dd.getId()).setValue(dd);
 
                 Toast toast = Toast.makeText(context, "Alteração realizada com sucesso",
                         Toast.LENGTH_LONG);
