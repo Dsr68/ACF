@@ -70,7 +70,7 @@ public class Listas extends AppCompatActivity {
                 DespesasDiarias dd = snapshot.getValue(DespesasDiarias.class);
 
                 if(dd.getSemana().equals(semanas.getSelectedItem().toString()
-                ) && dd.getMes() == mes
+                ) && dd.getMes() == convertStringPraNumero(meses.getSelectedItem().toString())
                  && dd.getAno() == Integer.parseInt(ano.getText().toString())){
                     listaDespesasDiarias.add(dd);
 
@@ -114,7 +114,9 @@ public class Listas extends AppCompatActivity {
                         DespesasDiarias dd = snapshot.getValue(DespesasDiarias.class);
 
                         if(dd.getSemana().equals(semanas.getSelectedItem().toString()
-                        ) && dd.getMes() == Integer.parseInt(meses.getSelectedItem().toString())
+                        ) && dd.getMes() == convertStringPraNumero(
+                                meses.getSelectedItem().toString()
+                        )
                                 && dd.getAno() == Integer.parseInt(ano.getText().toString())){
                             listaDespesasDiarias.add(dd);
 

@@ -39,7 +39,7 @@ public class DespesasDiarias extends AppCompatActivity {
 
         EditText categoria = findViewById(R.id.txtCategoria);
         ImageButton adicionar = findViewById(R.id.btnCriarCategoria);
-        ImageButton salvar = findViewById(R.id.btnDespesasDiarias);
+        //ImageButton salvar = findViewById(R.id.btnDespesasDiarias);
 
         Spinner semana = findViewById(R.id.spSemana);
         Spinner spCategoria = findViewById(R.id.spCategoria);

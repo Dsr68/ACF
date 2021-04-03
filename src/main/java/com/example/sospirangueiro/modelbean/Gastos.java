@@ -4,13 +4,12 @@ public class Gastos {
     private String id;
     private String descricao;
 
-    public Gastos(){
-
-    }
-
     public Gastos(String id, String descricao){
         this.id = id;
         this.descricao = descricao;
+    }
+
+    public Gastos() {
     }
 
     public String getId() {

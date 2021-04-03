@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.sospirangueiro.R;
+import com.example.sospirangueiro.modelbean.Categoria;
 import com.example.sospirangueiro.modelbean.DespesasDiarias;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -55,12 +56,12 @@ public class ListaDeCompras extends RecyclerView.Adapter<ListaDeCompras.ViewHold
         );
 
         List<String> categorias = new ArrayList<String>();
-        DatabaseReference dr = FirebaseDatabase.getInstance().getReference("despesas");
+        DatabaseReference dr = FirebaseDatabase.getInstance().getReference("categoria");
         dr.orderByValue().addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                DespesasDiarias dd = snapshot.getValue(DespesasDiarias.class);
-                categorias.add(dd.getCategoria());
+                Categoria c = snapshot.getValue(Categoria.class);
+                categorias.add(c.getDescricao());
 
                 holder.categoria.setAdapter(new ArrayAdapter<String>(context,
                         R.layout.support_simple_spinner_dropdown_item,
