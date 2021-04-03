@@ -138,19 +138,17 @@ public class Calculos extends AppCompatActivity {
                     double percentual1 = 0;
                     double percentual2 = 0;
 
-                    GastosFixos gastosFixos = snapshot.child("gastos_fixos" +
-                            "/397d2c60-11d5-4272-a0ed-0581b619d190").getValue(
-                            GastosFixos.class
-                    );
+                    for(DataSnapshot ds : snapshot.child("gastos_fixos").getChildren()){
+                        GastosFixos gastosFixos = ds.getValue(GastosFixos.class);
+                        valorGF += gastosFixos.getValor();
+                    }
 
-                    valorGF += gastosFixos.getValor();
                     int convecao1 = 0;
 
-                    DespesasDiarias despesasDiarias = snapshot.child("despesas" +
-                            "/f3925fb7-a6f5-48dd-9e8e-b3151ea77edc"
-                    ).getValue(DespesasDiarias.class);
-
-                    valorDV += despesasDiarias.getValor();
+                    for(DataSnapshot d : snapshot.child("despesas").getChildren()){
+                        DespesasDiarias dv = d.getValue(DespesasDiarias.class);
+                        valorDV += dv.getValor();
+                    }
 
                     percentual1 = ((valorGF * 100)/(valorGF + valorDV));
                     convecao1 = (int) percentual1;
