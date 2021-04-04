@@ -6,13 +6,17 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.sospirangueiro.R;
+import com.example.sospirangueiro.modelbean.Categoria;
 import com.example.sospirangueiro.modelbean.GastosFixos;
-import com.example.sospirangueiro.modeldao.DespesasFixasDAO;
+import com.example.sospirangueiro.modelbean.Metas;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -22,10 +26,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.example.sospirangueiro.modelbean.DespesasDiarias;
 import com.google.firebase.database.ValueEventListener;
 
-import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import static java.util.Calendar.*;
 
@@ -46,6 +51,13 @@ public class Calculos extends AppCompatActivity {
             TextView pecentualDV = findViewById(R.id.txtPDV);
             ProgressBar pGF =  findViewById(R.id.pGF);
             ProgressBar pDV = findViewById(R.id.pDV);
+
+            //Observação: onde tem categoria na verdade é metas
+            TextView valorDespesas = findViewById(R.id.txtViewValorCategoria);
+            ProgressBar progressBarCategoria = findViewById(R.id.pCategoria);
+            TextView percentagemCategoria = findViewById(R.id.txtPC);
+            Spinner pesquisa = findViewById(R.id.spPesquisarCategoria);
+            ImageButton btnPesquisa = findViewById(R.id.btnPesquisaCategoria);
 
             DatabaseReference dr1 = FirebaseDatabase.getInstance().getReference("despesas");
             dr1.orderByValue().addChildEventListener(new ChildEventListener() {
@@ -174,5 +186,60 @@ public class Calculos extends AppCompatActivity {
 
                 }
             });
+
+        DatabaseReference dr4 = FirebaseDatabase.getInstance().getReference();
+        dr4.addValueEventListener(new ValueEventListener() {
+            List<String> lista = new ArrayList<String>();
+            double totDespesas = 0;
+            double percentual = 0;
+            int convercao = 0;
+            Metas metas = new Metas();
+            DespesasDiarias despesasDiarias = new DespesasDiarias();
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                for(DataSnapshot ds : snapshot.child("metas").getChildren()){
+                    metas = ds.getValue(Metas.class);
+                    lista.add(metas.getDescricao());
+                }
+
+                pesquisa.setAdapter(new ArrayAdapter<String>(Calculos.this,
+                        R.layout.support_simple_spinner_dropdown_item,
+                        lista));
+
+                for(DataSnapshot ds2 : snapshot.child("despesas").getChildren()){
+                    despesasDiarias = ds2.getValue(DespesasDiarias.class);
+                    totDespesas += despesasDiarias.getValor();
+                }
+
+                NumberFormat format = NumberFormat.getCurrencyInstance();
+                String convertido = format.format(totDespesas);
+                valorDespesas.setText(convertido);
+
+                btnPesquisa.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        for(DataSnapshot ds3 : snapshot.child("metas").getChildren()){
+                            Metas metas1 = ds3.getValue(Metas.class);
+                            if(pesquisa.getSelectedItem().equals(metas1.getDescricao())){
+                                percentual = (totDespesas * 100)/(totDespesas + metas1.getLimite());
+                                convercao = (int) percentual;
+
+                                progressBarCategoria.setMax(100);
+                                progressBarCategoria.setProgress(convercao);
+
+                                percentagemCategoria.setText(convercao + "%");
+                            }
+                        }
+                    }
+                });
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         }
 }

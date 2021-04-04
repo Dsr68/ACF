@@ -21,6 +21,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,31 +43,19 @@ public class TelaEditar extends AppCompatActivity {
         metas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DatabaseReference dr = FirebaseDatabase.getInstance().getReference("metas");
-                dr.orderByValue().addChildEventListener(new ChildEventListener() {
+                DatabaseReference dr = FirebaseDatabase.getInstance().getReference();
+                dr.addValueEventListener(new ValueEventListener() {
                     @Override
-                    public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
                         lista.clear();
-                        Metas m = snapshot.getValue(Metas.class);
-                        lista.add(m);
 
-                        rView.setAdapter(new ListaDeMetas(lista, getApplicationContext()));
-                        rView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-                    }
+                        for(DataSnapshot ds1 : snapshot.child("metas").getChildren()){
+                            Metas m = ds1.getValue(Metas.class);
+                            lista.add(m);
 
-                    @Override
-                    public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-                    }
-
-                    @Override
-                    public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-                    }
-
-                    @Override
-                    public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
+                            rView.setAdapter(new ListaDeMetas(lista, getApplicationContext()));
+                            rView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                        }
                     }
 
                     @Override
@@ -81,36 +70,19 @@ public class TelaEditar extends AppCompatActivity {
         gastos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DatabaseReference dr = FirebaseDatabase.getInstance().getReference(
-                        "gastos_fixos");
-                dr.orderByValue().addChildEventListener(new ChildEventListener() {
+                DatabaseReference dr = FirebaseDatabase.getInstance().getReference();
+                dr.addValueEventListener(new ValueEventListener() {
                     @Override
-                    public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                        GastosFixos gf;
-
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
                         lsGastos.clear();
+                        for(DataSnapshot ds2 : snapshot.child("gastos_fixos").getChildren()){
+                            GastosFixos gf = ds2.getValue(GastosFixos.class);
+                            lsGastos.add(gf);
 
-                        gf = snapshot.getValue(GastosFixos.class);
-                        lsGastos.add(gf);
-
+                        }
                         rView.setAdapter(new ListaDeGastosFixos(lsGastos, getApplicationContext()
-                                ));
+                        ));
                         rView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-                    }
-
-                    @Override
-                    public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-                    }
-
-                    @Override
-                    public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-                    }
-
-                    @Override
-                    public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
                     }
 
                     @Override

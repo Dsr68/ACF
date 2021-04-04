@@ -19,12 +19,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <LinearLayout
         android:layout_width="200dp"
-        android:layout_height="250dp"
+        android:layout_height="400dp"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="50dp"
         android:layout_marginBottom="100dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -34,7 +35,7 @@
 
         <TextView
             android:id="@+id/txtViewGastoFixo"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="20dp"
             android:layout_gravity="center"
             android:layout_weight="1"
@@ -64,14 +65,15 @@
                 android:id="@+id/txtPGF"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAlignment="textEnd"
                 android:layout_gravity="end"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:textAlignment="textEnd" />
+
         </LinearLayout>
 
         <TextView
             android:id="@+id/txtViewDespesasVariaveis"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="20dp"
             android:layout_gravity="center"
             android:layout_weight="1"
@@ -80,7 +82,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="160dp"
+            android:layout_height="60dp"
             android:orientation="horizontal">
 
             <TextView
@@ -101,12 +103,84 @@
                 android:id="@+id/txtPDV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAlignment="textEnd"
                 android:layout_gravity="end"
+                android:layout_weight="1"
+                android:textAlignment="textEnd" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="Vizulaizar Categoria"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="116dp"
+            tools:layout_editor_absoluteY="443dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="116dp"
+            tools:layout_editor_absoluteY="196dp">
+
+            <TextView
+                android:id="@+id/txtViewValorCategoria"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="TextView" />
+
+            <ProgressBar
+                android:id="@+id/pCategoria"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/txtPC"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_weight="1"
+                android:text="TextView"
+                android:textAlignment="textEnd" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Spinner
+                android:id="@+id/spPesquisarCategoria"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <ImageButton
+                android:id="@+id/btnPesquisaCategoria"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                app:srcCompat="@drawable/ic_baseline_remove_red_eye_24"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="116dp"
+                tools:layout_editor_absoluteY="503dp" />
 
         </LinearLayout>
 
     </LinearLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
