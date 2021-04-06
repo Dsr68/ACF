@@ -10,7 +10,7 @@
         android:id="@+id/txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:text="Vizualizar Gastos"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -25,7 +25,7 @@
         android:layout_height="400dp"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="100dp"
         android:layout_marginBottom="100dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -40,7 +40,8 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:text="TextView"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -78,7 +79,8 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:text="TextView"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -116,6 +118,7 @@
             android:gravity="center_horizontal"
             android:text="Vizulaizar Categoria"
             android:textAlignment="center"
+            android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold"
             tools:ignore="MissingConstraints"

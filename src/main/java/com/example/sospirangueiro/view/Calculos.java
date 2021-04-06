@@ -199,6 +199,8 @@ public class Calculos extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
+                lista.clear();
+
                 for(DataSnapshot ds : snapshot.child("metas").getChildren()){
                     metas = ds.getValue(Metas.class);
                     lista.add(metas.getDescricao());
@@ -208,23 +210,80 @@ public class Calculos extends AppCompatActivity {
                         R.layout.support_simple_spinner_dropdown_item,
                         lista));
 
+
+                Date data = new Date();
+                Calendar calendar = getInstance();
+                calendar.setTime(data);
+
                 for(DataSnapshot ds2 : snapshot.child("despesas").getChildren()){
                     despesasDiarias = ds2.getValue(DespesasDiarias.class);
-                    totDespesas += despesasDiarias.getValor();
+
+                    if(calendar.get(MONTH) == despesasDiarias.getMes() &&
+                    calendar.get(YEAR) == despesasDiarias.getAno()
+                    ){
+                        if( (pesquisa.getSelectedItem().toString().equals(
+                                despesasDiarias.getMeta()
+                        ))){
+                            System.out.println(despesasDiarias.getDescricao());
+                            totDespesas += despesasDiarias.getValor();
+                        }
+
+                    }
                 }
 
                 NumberFormat format = NumberFormat.getCurrencyInstance();
                 String convertido = format.format(totDespesas);
                 valorDespesas.setText(convertido);
 
+                for(DataSnapshot ds2 : snapshot.child("despesas").getChildren()){
+                    despesasDiarias = ds2.getValue(DespesasDiarias.class);
+
+                    if(calendar.get(MONTH) == despesasDiarias.getMes() &&
+                    calendar.get(YEAR) == despesasDiarias.getAno() &&
+                    pesquisa.getSelectedItem().toString().equals(despesasDiarias.getMeta())){
+                        for(DataSnapshot ds3 : snapshot.child("metas").getChildren()){
+                            Metas metas1 = ds3.getValue(Metas.class);
+                            if(pesquisa.getSelectedItem().toString().equals(metas1.getDescricao())){
+                                percentual = (totDespesas * 100)/(metas1.getLimite());
+                                convercao = (int) percentual;
+
+                                progressBarCategoria.setMax(100);
+                                progressBarCategoria.setProgress(convercao);
+
+                                percentagemCategoria.setText(convercao + "%");
+                            }
+                        }
+                    }
+                }
+
                 btnPesquisa.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        double totDespesas2 = 0;
+                        for(DataSnapshot ds2 : snapshot.child("despesas").getChildren()){
+                            despesasDiarias = ds2.getValue(DespesasDiarias.class);
+
+                            if(calendar.get(MONTH) == despesasDiarias.getMes() &&
+                                    calendar.get(YEAR) == despesasDiarias.getAno()
+                            ){
+                                if( (pesquisa.getSelectedItem().toString().equals(
+                                        despesasDiarias.getMeta()
+                                ))){
+                                    System.out.println(despesasDiarias.getDescricao());
+                                    totDespesas2 += despesasDiarias.getValor();
+                                }
+
+                            }
+                        }
+
                         for(DataSnapshot ds3 : snapshot.child("metas").getChildren()){
                             Metas metas1 = ds3.getValue(Metas.class);
-                            if(pesquisa.getSelectedItem().equals(metas1.getDescricao())){
-                                percentual = (totDespesas * 100)/(totDespesas + metas1.getLimite());
+                            if(pesquisa.getSelectedItem().toString().equals(metas1.getDescricao())){
+                                percentual = (totDespesas2 * 100)/(metas1.getLimite());
                                 convercao = (int) percentual;
+
+                                String convertido2 = format.format(totDespesas2);
+                                valorDespesas.setText(convertido2);
 
                                 progressBarCategoria.setMax(100);
                                 progressBarCategoria.setProgress(convercao);

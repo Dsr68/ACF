@@ -15,6 +15,7 @@ public class GastosActivy extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gastos);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Button meta = findViewById(R.id.btnCriarMetas);
         Button gf = findViewById(R.id.btnRegistrarGastosFixos);

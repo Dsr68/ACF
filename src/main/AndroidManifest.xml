@@ -7,15 +7,18 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_baseline_monetization_on_24"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.SOSPirangueiro">
-        <activity android:name=".view.Calculos"></activity>
-        <activity android:name=".modelo_gastos_fixos" />
-        <activity android:name=".view.TelaEditar" />
-        <activity android:name=".view.Listas" />
-        <activity android:name=".view.DespesasDiarias" />
+        <activity android:name=".view.Calculos"
+            android:parentActivityName=".view.MainActivity"/>
+        <activity android:name=".view.TelaEditar"
+            android:parentActivityName=".view.Listas"/>
+        <activity android:name=".view.Listas"
+            android:parentActivityName=".view.MainActivity"/>
+        <activity android:name=".view.DespesasDiarias"
+            android:parentActivityName=".view.MainActivity"/>
         <activity
             android:name=".view.MainActivity"
             android:label="@string/app_name"
@@ -26,9 +29,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.DespesasFixasActivy" />
-        <activity android:name=".view.GastosActivy" />
-        <activity android:name=".view.MetaActivy" />
+        <activity android:name=".view.DespesasFixasActivy"
+            android:parentActivityName=".view.GastosActivy"/>
+        <activity android:name=".view.GastosActivy"
+            android:parentActivityName=".view.MainActivity" />
+        <activity android:name=".view.MetaActivy"
+            android:parentActivityName=".view.GastosActivy"/>
     </application>
 
 </manifest>

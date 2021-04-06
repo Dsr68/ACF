@@ -15,7 +15,7 @@
         android:layout_marginEnd="91dp"
         android:layout_marginRight="91dp"
         android:text="Registrar Despesas Fixas"
-        android:textColor="@color/cinza"
+        android:textColor="@color/black"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
